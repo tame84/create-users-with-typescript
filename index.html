@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Manage Users</title>
+    </head>
+    <body>
+        <form id="form">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" value="tame" />
+
+            <label for="age">Age</label>
+            <input
+                type="number"
+                min="1"
+                max="100"
+                name="age"
+                id="age"
+                value="16"
+            />
+
+            <label for="skillsCount">Skills Count</label>
+            <input
+                type="number"
+                min="1"
+                max="3"
+                name="skillsCount"
+                id="skillsCount"
+                value="2"
+            />
+
+            <input type="submit" value="Create an account" />
+        </form>
+        <div id="usersContainer"></div>
+        <script src="index.js"></script>
+    </body>
+</html>
