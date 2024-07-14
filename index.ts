@@ -8,16 +8,23 @@ class User {
     name: string;
     age: string;
     skills: (number | string)[];
+    role: Roles;
 
-    constructor(name: string, age: string, skills: (number | string)[]) {
+    constructor(
+        name: string,
+        age: string,
+        skills: (number | string)[],
+        role: Roles
+    ) {
         this.name = name;
         this.age = age;
         this.skills = skills;
+        this.role = role;
     }
 }
 
-const user1 = new User("User1", "47", [2, "Typescript, Scss"]);
-const user2 = new User("User2", "24", [2, "React, Javascript"]);
+const user1 = new User("User1", "47", [2, "Typescript, Scss"], Roles.ADMIN);
+const user2 = new User("User2", "24", [2, "React, Javascript"], Roles.USER);
 const users = [user1, user2];
 
 const form = document.getElementById("form") as HTMLFormElement;
@@ -44,10 +51,13 @@ const loadUsers = () => {
         const skills = document.createElement("span");
         skills.textContent = user.skills[1].toString();
 
+        const role = document.createElement("p");
+        role.textContent = "Role ID : " + user.role.toString();
+
         div.appendChild(name);
         div.appendChild(age);
         div.appendChild(skillsCount);
-        div.appendChild(skills);
+        div.appendChild(role);
 
         usersContainer?.appendChild(div);
     }
@@ -63,7 +73,7 @@ const addUser = () => {
     if (name !== "" && age !== "" && skillsCount !== "") {
         Number(skillsCount);
 
-        const user = new User(name, age, [skillsCount, ""]);
+        const user = new User(name, age, [skillsCount, ""], Roles.GUEST);
         users.push(user);
 
         loadUsers();
